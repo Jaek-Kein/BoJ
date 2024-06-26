@@ -1,0 +1,41 @@
+
+
+시험장수를 'place' 변수로 받음
+
+
+[ tester 수를 장소가 한곳일경우 단일 변수, 여러곳일 경우 배열로 받는다]
+
+if place == 1 
+	테스트받는 인원수 tester 을 input 으로 단일하게 받음
+else:
+	tester = list(map(int,input.split))
+
+
+main , sub = map(int, input.split()) 	# 주감독 main 그리고 부감독 sub
+
+judge_count = 0 
+
+if place == 1 : #장소가 한곳일 경우
+	temp = tester #계산을 위한 임시수 temp 개설
+	temp -= main #일단 주감독을 뺴버림
+	judge_count += 1	# 주감독뺏으니까 필요 감독수 +1
+	if temp < 1:	# 혹시 남은 시험인원수가 0이하일경우 필요감독수 print
+		print(judge_count)
+	else:
+		while temp > 0: #시험인원이 가 남아있을때
+			temp -= sub 	#부감독 감당가능수 빼기
+			judge_count += 1 	#필요감독수도 +1
+
+else: # 장소가 여러곳일경우
+	for i in range (0, len(tester)): #일단 장소별로 처리하기 0부터 끝까지
+		temp = tester[i] # i 번 장소 시험인원수를 temp 에 계산을 위하여 저장
+		temp -= main # 위와 동일하게 temp 에서 주감동 수만큼 빼보기
+		judge_count =+ 1 	#judge_count 도 +1
+		if temp > 0:	#temp가 남아있으면 계산시작
+			while temp > 0:		#temp가 남아있는 동안은 반복
+				temp -= sub		#부감동 감당수만큼 빼기
+				judge_count += 1 	#감독 필요수도 +1
+		else:
+			countinue	#temp가 충족되었으면 for 문 다음배열로 이동
+
+print (judge_count)			
