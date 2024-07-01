@@ -16,12 +16,8 @@ class Program
     //TODO 티셔츠 묶음 계산식
     for (int i = 0 ; i < 6 ; i++)
     {
-      if (tInputs[i] == 0) continue;
-      if (tInputs[i] <= tpile) tcounter++ ;
-      else 
-      {
-        tcounter += (tInputs[i] / tpile) + 1;
-      }
+      tcounter += tInputs[i] / tpile;
+      tcounter = tInputs[i] % tpile > 0 ? tcounter +1 : tcounter; // 삼항 연산자 생활화해보기 
     }
 
     Console.WriteLine(tcounter);
